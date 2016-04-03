@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ 			 x:Class="App1.Views.News.TodoItemPage" 
+       x:Title="Hello XAML Page">
+  <ContentPage.Content>
+   
+      <Label Text="{Binding Path=ID}" />
+     <Label  Text="{Binding Path=content}" />
+   
+  </ContentPage.Content>
+
+
+</ContentPage> 
