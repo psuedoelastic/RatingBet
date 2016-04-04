@@ -6,7 +6,10 @@ namespace App1.Model
 {
     public class NewsItem: Items
     {
-        public int ID { get; set; }
-        public string content { get; set; }
+        public int id { get; set; }
+        public string preview { get; set; }
+        public string image { get; set; }
+        public string name { get; set; }
+        public string html { get; set; }
     }
 }

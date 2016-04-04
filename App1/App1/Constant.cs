@@ -6,6 +6,6 @@ namespace App1
 {
     public static class Constant
     {
-        public static string RestURL = 'http://m.ratingbet.com/api/v1/{0}';
+        public static string RestURL = "http://m.ratingbet.com/api/v1/{0}";
     }
 }

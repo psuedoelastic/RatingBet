@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using App1.Data;
 
 namespace App1
 {
 	public class App : Application
 	{
+        public static NewsManager NewManager { get; set; }
 		public App ()
 		{
             // The root page of your application
@@ -25,6 +27,7 @@ namespace App1
 				}
 			};
             */
+            NewManager = new NewsManager(new NewsService());
             MainPage = new NavigationPage( new App1.Views.News.ListItem());
 
         }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using App1.Model;
 
@@ -16,16 +18,13 @@ namespace App1.Views.News
         public ListItem ()
 		{
             InitializeComponent();
-            // ListView NewsItemList = new ListView();
+       
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
 
-
-            for (int i =1;i < 12; i++)
-            {
-                newitem.Add(new NewsItem { ID=i ,content = "Text number"+i });
-            }
-            NewsItemList.ItemsSource = newitem;
-            
-
+            NewsItemList.ItemsSource = await App.NewManager.GetTaskAsync();
         }
         public void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
@@ -40,6 +39,7 @@ namespace App1.Views.News
             Navigation.PushAsync(newPage);
             //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
         }
+       
     }
 
 }

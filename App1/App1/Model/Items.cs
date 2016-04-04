@@ -6,6 +6,6 @@ namespace App1.Model
 {
     public interface Items
     {
-        int ID { get; set; }
+        int id { get; set; }
     }
 }
