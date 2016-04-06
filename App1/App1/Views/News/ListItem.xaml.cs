@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-
-using System.Threading.Tasks;
-
+//using System.Threading.Tasks;
 using Xamarin.Forms;
 using App1.Model;
 
@@ -15,6 +10,8 @@ namespace App1.Views.News
 	public partial class ListItem : ContentPage
 	{
         ObservableCollection<NewsItem> newitem = new ObservableCollection<NewsItem>();
+       
+
         public ListItem ()
 		{
             InitializeComponent();
@@ -25,6 +22,7 @@ namespace App1.Views.News
             base.OnAppearing();
 
             NewsItemList.ItemsSource = await App.NewManager.GetTaskAsync();
+            NewsItemList.HasUnevenRows = true;
         }
         public void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
@@ -39,7 +37,10 @@ namespace App1.Views.News
             Navigation.PushAsync(newPage);
             //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
         }
-       
+        public async void AsyncRefreshing(object sender, EventArgs e)
+        {
+            NewsItemList.ItemsSource = await App.NewManager.GetTaskAsync();
+        }   
     }
 
 }

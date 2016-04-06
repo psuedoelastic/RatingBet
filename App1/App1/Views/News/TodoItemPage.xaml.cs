@@ -19,8 +19,8 @@ namespace App1.Views.News
         {
             var Items = (NewsItem)BindingContext;
             var htmlSource = new HtmlWebViewSource();
-            var res = await App.NewManager.GetItem(Items);
-            htmlSource.Html = res.html;
+            //var res = await App.NewManager.GetItem(Items);
+            htmlSource.Html = Items.html;
 
             Browser.Source = htmlSource;
         }

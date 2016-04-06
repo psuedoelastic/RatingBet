@@ -1,21 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App1.Views.News.ListItem">
-  <ListView x:Name="NewsItemList"  SeparatorColor="Green"  ItemSelected="OnSelection">
+             x:Class="App1.Views.News.ListItem"
+             x:Title="Спиок новостей">
+  
+  <ListView x:Name="NewsItemList"  
+            ItemSelected="OnSelection" 
+            Refreshing="AsyncRefreshing" 
+            >
    
     <ListView.ItemTemplate>
       <DataTemplate>
-        <ViewCell >
-          <StackLayout WidthRequest="640"  VerticalOptions="LayoutOptions.FillAndExpand" HorizontalOptions="LayoutOptions.FillAndExpand">
+        <ViewCell  >
+          <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5,10,5,0" >
 
-          <Image  Source="{Binding image}"  /> 
-          <Label Text="{Binding name}" TextColor="Aqua" FontSize="Large" />
-            <Label Text="{Binding preview}" TextColor="Aqua"  />
+          <Image  Source="{Binding image}"  Aspect="AspectFill" /> 
+          <Label Text="{Binding name}"  FontSize="Large" />
+            <Label Text="{Binding preview}"   />
           </StackLayout>
         </ViewCell>
 
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
+ 
 </ContentPage>

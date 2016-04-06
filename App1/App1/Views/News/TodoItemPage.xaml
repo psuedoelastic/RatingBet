@@ -4,15 +4,14 @@
  			 x:Class="App1.Views.News.TodoItemPage" 
        x:Title="Hello XAML Page">
   <ContentPage.Content>
-    <ScrollView>
+    
       <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
-        <Image  Source="{Binding Path=image}" WidthRequest="640" />
-        <Label Text="{Binding  Path=name}" TextColor="Aqua" FontSize="Large" />
-        <Label Text="{Binding  Path=preview}" TextColor="Aqua"  />
+        <Image  Source="{Binding Path=image}"  Aspect="AspectFill" />
+        <Label Text="{Binding  Path=name}"  FontSize="Large" />
+        
         <WebView x:Name="Browser"  HeightRequest="500" HorizontalOptions="FillAndExpand" />
       </StackLayout>
-    </ScrollView>
+   
   </ContentPage.Content>
 
 

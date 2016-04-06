@@ -14,6 +14,7 @@ namespace App1.Data
     {
         HttpClient client;
         public List<NewsItem> Items { get; set; }
+        private static int LastId { get; set; }
         public NewsService()
         {
             client = new HttpClient();
@@ -23,8 +24,16 @@ namespace App1.Data
         public async Task<List<NewsItem>> RefreshDataAsync()
         {
             Items = new List<NewsItem>();
-
-            var uri = new Uri(string.Format(Constant.RestURL, "apinews/list?limit=10"));
+            LastId = 0;
+            Uri uri;
+            if (LastId == 0)
+            {
+                 uri = new Uri(string.Format(Constant.RestURL, "apinews/list?limit=10"));
+            }
+            else
+            {
+                 uri = new Uri(string.Format(Constant.RestURL, string.Format("apinews/list?limit=10&id={0}",LastId)));
+            }
             try
             {
                 var response = await client.GetAsync(uri);
@@ -34,7 +43,27 @@ namespace App1.Data
                     var result = JsonConvert.DeserializeObject<ResultReqest<NewsItem>>(contet);
                     if(result.status == 200)
                     {
-                        Items = result.result;
+                        if (LastId == 0)
+                        {
+                            Items = result.result;
+                        }else
+                        {
+                            Items.AddRange(result.result);
+                        }
+                        foreach(NewsItem item in Items)
+                        {
+                            if(LastId == 0)
+                            {
+                                LastId = item.id;
+                            }else
+                            {
+                                if(LastId > item.id)
+                                {
+                                    LastId = item.id;
+                                }
+                            }
+                            
+                        }
                     }
                 }
             }catch(Exception ex)
