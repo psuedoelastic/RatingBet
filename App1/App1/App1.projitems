@@ -16,9 +16,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\NewsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ResultItemReqest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ResultReqest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ImageResource.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\TestExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Items.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PageItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\NewsItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResourceLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\News\ListItem.xaml.cs">
       <DependentUpon>ListItem.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -32,6 +37,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\News\TodoItemPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <None Include="$(MSBuildThisFileDirectory)icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\News\ListItem.xaml">

@@ -15,7 +15,7 @@ namespace App1.Views.News
             InitializeComponent();
 
         }
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             var Items = (NewsItem)BindingContext;
             var htmlSource = new HtmlWebViewSource();

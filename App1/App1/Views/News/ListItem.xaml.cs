@@ -15,7 +15,8 @@ namespace App1.Views.News
         public ListItem ()
 		{
             InitializeComponent();
-       
+          
+
         }
         protected async override void OnAppearing()
         {
