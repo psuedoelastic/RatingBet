@@ -18,13 +18,13 @@ namespace App1.Data
         public NewsService()
         {
             client = new HttpClient();
-
+            LastId = 0;
 
         }
         public async Task<List<NewsItem>> RefreshDataAsync()
         {
             Items = new List<NewsItem>();
-            LastId = 0;
+           
             Uri uri;
             if (LastId == 0)
             {
@@ -32,6 +32,7 @@ namespace App1.Data
             }
             else
             {
+                LastId--;
                  uri = new Uri(string.Format(Constant.RestURL, string.Format("apinews/list?limit=10&id={0}",LastId)));
             }
             try
@@ -43,14 +44,8 @@ namespace App1.Data
                     var result = JsonConvert.DeserializeObject<ResultReqest<NewsItem>>(contet);
                     if(result.status == 200)
                     {
-                        if (LastId == 0)
-                        {
-                            Items = result.result;
-                        }else
-                        {
-                            Items.AddRange(result.result);
-                        }
-                        foreach(NewsItem item in Items)
+                        Items = result.result;
+                        foreach (NewsItem item in Items)
                         {
                             if(LastId == 0)
                             {

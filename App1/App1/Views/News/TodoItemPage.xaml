@@ -4,7 +4,6 @@
  			 x:Class="App1.Views.News.TodoItemPage" 
        x:Title="Hello XAML Page">
   <ContentPage.Content>
-    
       <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Image  Source="{Binding Path=image}"  Aspect="AspectFill" />
         <Label Text="{Binding  Path=name}"  FontSize="Large" />
